@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,22 @@
 </head>
 
 <link rel="stylesheet" href="styyle.css">
+
 <body>
     <h1>SIGNUP FORM</h1>
 
-    <form onsubmit="return funcSign()">
+    <form onsubmit="return signup()" action="#">
         <label>Name :</label>
         <br>
         <input type="text" id="name" placeholder="Enter Your Name">
         <br>
         <label>Father Name :</label>
         <br>
-        <input type="text"  id="fname" placeholder="Father Name">
+        <input type="text" id="fname" placeholder="Father Name">
         <br>
         <label>CNIC NO :</label>
         <br>
-        <input type="text"  id="cnic" placeholder="Enter Your CNIC NO.">
+        <input type="text" id="cnic" placeholder="Enter Your CNIC NO.">
         <br>
         <label>Email :</label>
         <br>
@@ -33,11 +35,11 @@
         <br>
         <br>
         <div id="button">
-        <input type="submit" value="Sign Up!">
+            <input type="submit" value="Sign Up!">
         </div><br>
         <br>
-        
-        
+
+
     </form>
 
     <br>
@@ -46,38 +48,10 @@
     <span id="result"></span>
 
     </div>
-<script>
-
-    function funcSign() {
-        var user = {
-            name: document.getElementById('name').value,
-            fathername: document.getElementById('fname').value,
-            cnic : document.getElementById("cnic").value,
-            email: document.getElementById('email').value,
-            password: document.getElementById('password').value
-        };
-        document.getElementById('name').value = "";
-        document.getElementById('fname').value = "";
-        document.getElementById("cnic").value = "";
-        document.getElementById('email').value = "";
-        document.getElementById('password').value = "";
-        const Http = new XMLHttpRequest();
-        const url = 'http://localhost:5000/signup';
-        Http.open("POST", url);
-        Http.setRequestHeader("Content-Type", "application/json");
-        Http.send(JSON.stringify(user));
-        Http.onreadystatechange = (e) => {
-            document.getElementById("result").innerText = Http.responseText;
-        }
-        return false;
-    
-    
-    }
-</script>
-
-
     
 
-    
+    <script src="index.js"></script>
+
 </body>
+
 </html>

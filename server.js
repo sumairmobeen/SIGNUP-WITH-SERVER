@@ -1,11 +1,11 @@
 let users = [
-    {
-        name: "mobeem",
-        fname: "GR",
-        cnic: "111111111111",
-        email: "mobeengrs@gmail.com",
-        password: 123
-    },
+       {
+            name: "mobeen",
+            fname: "Ghulam Rasool",
+            cnic: "111111111111",
+            email: "mobeengrs@gmail.com",
+            password: "123"
+        }, 
 
 ];
 
@@ -28,27 +28,27 @@ app.use(bodyParser.json())
 
 app.get("/", (req, res, next) => {
     console.log("Get your Responce");
-    res.send("Signup Successfull");
+    res.send("Server is running");
 });
-app.post('/signup', (req, res) => {
+app.post('/signup', (req, res, next) => {
     let isFound = false;
-    let userData = users;
-    if (userData) {
-        users = userData;
-    }
-    else {
-        users = [];
-    }
-    for (i = 0; i < users.length; i++) {
-        if (users[i].email === req.body.email) {
+    let userEmail = req.body.email1
+
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].email1 === userEmail) {
             isFound = true;
             break;
         }
     }
-    if (isFound) {
-        res.send("Already Exsist User");
 
+    if (isFound) {
+        res.send("user not found")
     }
+
+    // else if (isFound) {
+    //     res.send("Already Exsist User");
+
+
     else {
         users.push(req.body);
         console.log(req.body);
@@ -70,10 +70,12 @@ app.post('/login', (req, res) => {
     }
 
     if (isFound === false) {
-        res.send("User Not Found");
+        res.send("Login Succesfuly :" + email1);
+        console.log("reply ok")
     }
     else {
-        res.send("Login Succesfuly :" + email1);
+        res.send("User Not Found");
+       
 
     }
 
@@ -84,3 +86,4 @@ app.post('/login', (req, res) => {
 app.listen(PORT, () => {
     console.log("server is running on " + PORT);
 });
+return false;

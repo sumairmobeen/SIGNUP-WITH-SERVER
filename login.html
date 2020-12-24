@@ -7,14 +7,14 @@
 </head>
 <link rel="stylesheet" href="login.css">
 <body>
-    
+    <h4>LOGIN FORM</h4>
     <form onsubmit="return login()">
         <label>email:</label>
         <input type="email" id="uEmail">
         <br>
         <br>
         <label>Password:</label>
-        <input type="password" id="uPpassword">
+        <input type="password" id="uPassword">
         <br>
         <br>
         <button>Logins</button>
@@ -25,31 +25,7 @@
     <br>
     <span id="container"></span>
 
-<script>
-    function login() {
-
-        let Emails = document.getElementById("uEmail").value;
-        let Passwords = document.getElementById("uPpassword").value;
-    
-        const Http = new XMLHttpRequest();
-        const url = 'http://localhost:5000/login';
-        Http.open("POST", url);
-        Http.setRequestHeader("Content-Type", "application/json");
-    
-        Http.send(JSON.stringify({
-            email: Emails,
-            password: Passwords
-        }));
-        document.getElementById('uEmail').value = ""
-        document.getElementById('uPpassword').value = ""
-        Http.onreadystatechange = (e) => {
-            document.getElementById("container").innerText = Http.responseText;
-        }
-    
-    
-        return false;
-    }
-    </script>
+    <script src="index.js"></script>
     
 </body>
 </html>
