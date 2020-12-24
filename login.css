@@ -1,0 +1,23 @@
+body{text-align: center;
+    font-size: 20px;
+    color: darkseagreen;
+    background: linear-gradient(to right, #181818, #006eff, #202020);}
+
+p {
+    font-size: 18px;}
+
+    
+p {
+    font-size: 20px;
+    color: rgb(252, 252, 252);
+
+}
+a{font-size: 20px;
+    color: rgb(0, 255, 76);
+}
+.submit{
+    color: yellow;
+    background-color: black;
+
+
+}

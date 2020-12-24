@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN FORM</title>
+</head>
+<link rel="stylesheet" href="login.css">
+<body>
+    
+    <form onsubmit="return login()">
+        <label>email:</label>
+        <input type="email" id="uEmail">
+        <br>
+        <br>
+        <label>Password:</label>
+        <input type="password" id="uPpassword">
+        <br>
+        <br>
+        <button>Logins</button>
+    </form>
+    <br>
+    <p>Create account<a href="./index.html">Sign up</a> </p>
+    <br>
+    <br>
+    <span id="container"></span>
+
+<script>
+    function login() {
+
+        let Emails = document.getElementById("uEmail").value;
+        let Passwords = document.getElementById("uPpassword").value;
+    
+        const Http = new XMLHttpRequest();
+        const url = 'http://localhost:5000/login';
+        Http.open("POST", url);
+        Http.setRequestHeader("Content-Type", "application/json");
+    
+        Http.send(JSON.stringify({
+            email: Emails,
+            password: Passwords
+        }));
+        document.getElementById('uEmail').value = ""
+        document.getElementById('uPpassword').value = ""
+        Http.onreadystatechange = (e) => {
+            document.getElementById("container").innerText = Http.responseText;
+        }
+    
+    
+        return false;
+    }
+    </script>
+    
+</body>
+</html>
